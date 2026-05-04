@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet new *)",
+      "Bash(dotnet build *)",
+      "Bash(dotnet run *)",
+      "Bash(tasklist)",
+      "Bash(taskkill *)",
+      "Bash(cmd.exe *)",
+      "Bash(powershell *)",
+      "Bash(gh --version)",
+      "Bash(git --version)",
+      "Bash(winget install *)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\")",
+      "Bash(dotnet publish *)",
+      "Bash(gh auth *)"
+    ]
+  }
+}

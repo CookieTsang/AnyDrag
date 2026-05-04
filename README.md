@@ -43,10 +43,6 @@ dotnet run
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
 ```
 
-### 开源协议
-
-MIT License
-
 ---
 
 # AnyDrag
@@ -89,4 +85,4 @@ dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=
 
 ### License
 
-MIT License
+See [LICENSE](LICENSE).

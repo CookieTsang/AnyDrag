@@ -161,8 +161,11 @@ public class MouseHook : IDisposable
 
                 if (_pendingRemovals.Remove(button.Value))
                 {
-                    _toleranceTimer?.Dispose();
-                    _toleranceTimer = null;
+                    if (_pendingRemovals.Count == 0)
+                    {
+                        _toleranceTimer?.Dispose();
+                        _toleranceTimer = null;
+                    }
                 }
 
                 if (!_dragging && _requiredButtons.Count > 0 && _requiredButtons.IsSubsetOf(_pressedButtons))
@@ -184,6 +187,7 @@ public class MouseHook : IDisposable
                     {
                         _dragging = false;
                         _pendingRemovals.Clear();
+                        ResetBlocking();
                         DragEnd?.Invoke();
                     }, null, ToleranceMs, System.Threading.Timeout.Infinite);
                 }

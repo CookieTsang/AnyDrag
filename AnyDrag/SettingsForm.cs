@@ -93,7 +93,8 @@ public class SettingsForm : Form
     private void InitializeComponent()
     {
         Text = Lang.Get("SettingsTitle");
-        Size = new Size(580, 560);
+        Size = new Size(620, 620);
+        BackColor = Color.FromArgb(245, 245, 245);
         FormBorderStyle = FormBorderStyle.FixedDialog;
         StartPosition = FormStartPosition.CenterScreen;
         MaximizeBox = false;
@@ -106,24 +107,24 @@ public class SettingsForm : Form
         var langPanel = new Panel
         {
             Dock = DockStyle.Top,
-            Height = 55,
-            Padding = new Padding(20, 12, 20, 0)
+            Height = 60,
+            Padding = new Padding(24, 16, 24, 0)
         };
 
         _langLabel = new Label
         {
             Text = Lang.Get("Language"),
-            Location = new Point(20, 16),
+            Location = new Point(24, 20),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
 
         _langCombo = new ComboBox
         {
-            Location = new Point(100, 13),
-            Size = new Size(140, 28),
+            Location = new Point(110, 17),
+            Size = new Size(150, 28),
             DropDownStyle = ComboBoxStyle.DropDownList,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
         _langCombo.Items.AddRange(new object[] { "zh-CN", "en-US" });
         _langCombo.SelectedItem = Settings.Language;
@@ -136,24 +137,24 @@ public class SettingsForm : Form
         var comboPanel = new Panel
         {
             Dock = DockStyle.Top,
-            Height = 140,
-            Padding = new Padding(20)
+            Height = 160,
+            Padding = new Padding(24, 12, 24, 0)
         };
 
         _countLabel = new Label
         {
             Text = Lang.Get("ButtonCount"),
-            Location = new Point(20, 18),
+            Location = new Point(24, 18),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
 
         _countCombo = new ComboBox
         {
-            Location = new Point(130, 15),
+            Location = new Point(140, 15),
             Size = new Size(70, 28),
             DropDownStyle = ComboBoxStyle.DropDownList,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
         _countCombo.Items.AddRange(new object[] { "1", "2", "3", "4", "5" });
         _countCombo.SelectedItem = Settings.ButtonCount.ToString();
@@ -161,17 +162,17 @@ public class SettingsForm : Form
         _comboTitleLabel = new Label
         {
             Text = Lang.Get("CurrentCombo"),
-            Location = new Point(20, 58),
+            Location = new Point(24, 58),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
 
         _comboLabel = new Label
         {
             Text = "",
-            Location = new Point(20, 88),
+            Location = new Point(24, 88),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 14, FontStyle.Bold)
+            Font = new Font("Segoe UI", 14, FontStyle.Bold)
         };
 
         comboPanel.Controls.Add(_countLabel);
@@ -183,28 +184,35 @@ public class SettingsForm : Form
         var buttonPanel = new FlowLayoutPanel
         {
             Dock = DockStyle.Top,
-            Height = 55,
+            Height = 60,
             FlowDirection = FlowDirection.LeftToRight,
-            Padding = new Padding(15),
-            AutoSize = true
+            Padding = new Padding(20, 8, 20, 8)
         };
 
         _recordButton = new Button
         {
             Text = Lang.Get("RecordCombo"),
             Size = new Size(140, 40),
-            Margin = new Padding(5),
-            Font = new Font(Font.FontFamily, 10)
+            Margin = new Padding(4),
+            Font = new Font("Segoe UI", 10),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = Color.FromArgb(50, 50, 50),
+            ForeColor = Color.White
         };
+        _recordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
         _recordButton.Click += StartRecording;
 
         _resetButton = new Button
         {
             Text = Lang.Get("ResetDefault"),
             Size = new Size(140, 40),
-            Margin = new Padding(5),
-            Font = new Font(Font.FontFamily, 10)
+            Margin = new Padding(4),
+            Font = new Font("Segoe UI", 10),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = Color.FromArgb(50, 50, 50),
+            ForeColor = Color.White
         };
+        _resetButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
         _resetButton.Click += ResetToDefault;
 
         buttonPanel.Controls.Add(_recordButton);
@@ -214,33 +222,37 @@ public class SettingsForm : Form
         var hotkeyPanel = new Panel
         {
             Dock = DockStyle.Top,
-            Height = 100,
-            Padding = new Padding(20)
+            Height = 110,
+            Padding = new Padding(24, 12, 24, 0)
         };
 
         _hotkeyTitleLabel = new Label
         {
             Text = Lang.Get("ToggleHotkey"),
-            Location = new Point(20, 12),
+            Location = new Point(24, 12),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 10)
+            Font = new Font("Segoe UI", 10)
         };
 
         _hotkeyLabel = new Label
         {
             Text = "",
-            Location = new Point(20, 42),
+            Location = new Point(24, 42),
             AutoSize = true,
-            Font = new Font(Font.FontFamily, 13, FontStyle.Bold)
+            Font = new Font("Segoe UI", 13, FontStyle.Bold)
         };
 
         _hotkeyRecordButton = new Button
         {
             Text = Lang.Get("RecordHotkey"),
             Size = new Size(140, 35),
-            Location = new Point(380, 38),
-            Font = new Font(Font.FontFamily, 10)
+            Location = new Point(400, 40),
+            Font = new Font("Segoe UI", 10),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = Color.FromArgb(50, 50, 50),
+            ForeColor = Color.White
         };
+        _hotkeyRecordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
         _hotkeyRecordButton.Click += StartHotkeyRecording;
 
         hotkeyPanel.Controls.Add(_hotkeyTitleLabel);
@@ -251,9 +263,9 @@ public class SettingsForm : Form
         var bottomPanel = new FlowLayoutPanel
         {
             Dock = DockStyle.Bottom,
-            Height = 60,
+            Height = 65,
             FlowDirection = FlowDirection.RightToLeft,
-            Padding = new Padding(15)
+            Padding = new Padding(20, 10, 20, 10)
         };
 
         _cancelButton = new Button
@@ -261,18 +273,26 @@ public class SettingsForm : Form
             Text = Lang.Get("Cancel"),
             Size = new Size(100, 42),
             DialogResult = DialogResult.Cancel,
-            Margin = new Padding(5),
-            Font = new Font(Font.FontFamily, 10)
+            Margin = new Padding(4),
+            Font = new Font("Segoe UI", 10),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = Color.FromArgb(180, 180, 180),
+            ForeColor = Color.FromArgb(50, 50, 50)
         };
+        _cancelButton.FlatAppearance.BorderColor = Color.FromArgb(160, 160, 160);
 
         _okButton = new Button
         {
             Text = Lang.Get("Ok"),
             Size = new Size(100, 42),
             DialogResult = DialogResult.OK,
-            Margin = new Padding(5),
-            Font = new Font(Font.FontFamily, 10)
+            Margin = new Padding(4),
+            Font = new Font("Segoe UI", 10),
+            FlatStyle = FlatStyle.Flat,
+            BackColor = Color.FromArgb(0, 120, 212),
+            ForeColor = Color.White
         };
+        _okButton.FlatAppearance.BorderColor = Color.FromArgb(0, 100, 180);
         _okButton.Click += (s, e) =>
         {
             Settings.ButtonCombo = new List<MouseButton>(_recordedButtons);
@@ -287,8 +307,10 @@ public class SettingsForm : Form
 
         Controls.Add(bottomPanel);
         Controls.Add(hotkeyPanel);
+        Controls.Add(CreateSeparator());
         Controls.Add(buttonPanel);
         Controls.Add(comboPanel);
+        Controls.Add(CreateSeparator());
         Controls.Add(langPanel);
 
         AcceptButton = _okButton;
@@ -298,6 +320,17 @@ public class SettingsForm : Form
 
         _recordTimer = new System.Windows.Forms.Timer { Interval = 3000 };
         _recordTimer.Tick += (s, e) => StopRecording();
+    }
+
+    private static Panel CreateSeparator()
+    {
+        return new Panel
+        {
+            Dock = DockStyle.Top,
+            Height = 1,
+            BackColor = Color.FromArgb(220, 220, 220),
+            Margin = new Padding(24, 0, 24, 0)
+        };
     }
 
     private void OnLanguageChanged(object? sender, EventArgs e)
@@ -330,6 +363,8 @@ public class SettingsForm : Form
         _recordButton.Text = Lang.Get("PressCombo");
         _recordButton.Enabled = false;
         _okButton.Enabled = false;
+        _recordButton.BackColor = Color.FromArgb(200, 60, 60);
+        _recordButton.FlatAppearance.BorderColor = Color.FromArgb(180, 40, 40);
         UpdateComboText();
 
         _hookProc = RecordHookCallback;
@@ -357,6 +392,8 @@ public class SettingsForm : Form
         _recordButton.Text = Lang.Get("RecordCombo");
         _recordButton.Enabled = true;
         _okButton.Enabled = true;
+        _recordButton.BackColor = Color.FromArgb(50, 50, 50);
+        _recordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
 
         if (_recordedButtons.Count == 0)
         {

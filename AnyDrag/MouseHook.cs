@@ -64,9 +64,6 @@ public class MouseHook : IDisposable
     private readonly HashSet<MouseButton> _pressedButtons = new();
     private HashSet<MouseButton> _requiredButtons = new();
     private System.Threading.Timer? _blockTimer;
-    private System.Threading.Timer? _toleranceTimer;
-    private readonly HashSet<MouseButton> _pendingRemovals = new();
-    private const int ToleranceMs = 300;
 
     public event Action? DragStart;
     public event Action? DragEnd;
@@ -84,13 +81,6 @@ public class MouseHook : IDisposable
         _blocking = false;
         _blockTimer?.Dispose();
         _blockTimer = null;
-    }
-
-    private void CancelTolerance()
-    {
-        _toleranceTimer?.Dispose();
-        _toleranceTimer = null;
-        _pendingRemovals.Clear();
     }
 
     public void Install()
@@ -138,13 +128,13 @@ public class MouseHook : IDisposable
 
             bool isDown = button.HasValue && msg is WM_LBUTTONDOWN or WM_RBUTTONDOWN or WM_MBUTTONDOWN or WM_XBUTTONDOWN;
             bool isUp = button.HasValue && !isDown;
-            bool isComboButton = button.HasValue && (_requiredButtons.Contains(button.Value) || _pendingRemovals.Contains(button.Value));
+            bool isComboButton = button.HasValue && _requiredButtons.Contains(button.Value);
 
             // When we have all but one required button, start blocking
             // to prevent system menus/selection from triggering
             if (isComboButton && !_blocking && !_dragging)
             {
-                int matchCount = _requiredButtons.Count(b => _pressedButtons.Contains(b) || _pendingRemovals.Contains(b));
+                int matchCount = _requiredButtons.Count(b => _pressedButtons.Contains(b));
                 if (matchCount >= _requiredButtons.Count - 1)
                 {
                     _blocking = true;
@@ -158,19 +148,8 @@ public class MouseHook : IDisposable
             if (button.HasValue && isDown)
             {
                 _pressedButtons.Add(button.Value);
-
-                if (_pendingRemovals.Remove(button.Value))
-                {
-                    if (_pendingRemovals.Count == 0)
-                    {
-                        _toleranceTimer?.Dispose();
-                        _toleranceTimer = null;
-                    }
-                }
-
                 if (!_dragging && _requiredButtons.Count > 0 && _requiredButtons.IsSubsetOf(_pressedButtons))
                 {
-                    CancelTolerance();
                     _dragging = true;
                     DragStart?.Invoke();
                 }
@@ -178,28 +157,14 @@ public class MouseHook : IDisposable
             else if (button.HasValue && isUp)
             {
                 _pressedButtons.Remove(button.Value);
-
                 if (_dragging)
                 {
-                    _pendingRemovals.Add(button.Value);
-                    _toleranceTimer?.Dispose();
-                    _toleranceTimer = new System.Threading.Timer(_ =>
-                    {
-                        _dragging = false;
-                        _pendingRemovals.Clear();
-                        ResetBlocking();
-                        DragEnd?.Invoke();
-                    }, null, ToleranceMs, System.Threading.Timeout.Infinite);
+                    _dragging = false;
+                    DragEnd?.Invoke();
                 }
-                else if (_blocking && !_dragging)
+                if (_blocking && !_dragging)
                 {
-                    _pendingRemovals.Add(button.Value);
-                    _toleranceTimer?.Dispose();
-                    _toleranceTimer = new System.Threading.Timer(_ =>
-                    {
-                        _pendingRemovals.Clear();
-                        ResetBlocking();
-                    }, null, ToleranceMs, System.Threading.Timeout.Infinite);
+                    ResetBlocking();
                 }
             }
             else if (msg == WM_MOUSEMOVE && _dragging)
@@ -220,7 +185,6 @@ public class MouseHook : IDisposable
     public void Dispose()
     {
         _blockTimer?.Dispose();
-        _toleranceTimer?.Dispose();
         Uninstall();
     }
 }

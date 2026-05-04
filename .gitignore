@@ -1,0 +1,19 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vs/
+.vs/
+
+## Claude
+.claude/
+
+## Publish output
+MouseDrag/publish/
+MouseDrag/publish-fd/
+
+## IDE
+.idea/
+*.sln.DotSettings.user

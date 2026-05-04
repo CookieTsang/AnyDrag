@@ -194,12 +194,9 @@ public class SettingsForm : Form
             Text = Lang.Get("RecordCombo"),
             Size = new Size(140, 40),
             Margin = new Padding(4),
-            Font = new Font("Segoe UI", 10),
-            FlatStyle = FlatStyle.Flat,
-            BackColor = Color.FromArgb(50, 50, 50),
-            ForeColor = Color.White
+            Font = new Font("Segoe UI", 10)
         };
-        _recordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+        ApplyDarkFlatStyle(_recordButton);
         _recordButton.Click += StartRecording;
 
         _resetButton = new Button
@@ -207,12 +204,9 @@ public class SettingsForm : Form
             Text = Lang.Get("ResetDefault"),
             Size = new Size(140, 40),
             Margin = new Padding(4),
-            Font = new Font("Segoe UI", 10),
-            FlatStyle = FlatStyle.Flat,
-            BackColor = Color.FromArgb(50, 50, 50),
-            ForeColor = Color.White
+            Font = new Font("Segoe UI", 10)
         };
-        _resetButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+        ApplyDarkFlatStyle(_resetButton);
         _resetButton.Click += ResetToDefault;
 
         buttonPanel.Controls.Add(_recordButton);
@@ -245,14 +239,11 @@ public class SettingsForm : Form
         _hotkeyRecordButton = new Button
         {
             Text = Lang.Get("RecordHotkey"),
-            Size = new Size(140, 35),
+            Size = new Size(140, 40),
             Location = new Point(400, 40),
-            Font = new Font("Segoe UI", 10),
-            FlatStyle = FlatStyle.Flat,
-            BackColor = Color.FromArgb(50, 50, 50),
-            ForeColor = Color.White
+            Font = new Font("Segoe UI", 10)
         };
-        _hotkeyRecordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+        ApplyDarkFlatStyle(_hotkeyRecordButton);
         _hotkeyRecordButton.Click += StartHotkeyRecording;
 
         hotkeyPanel.Controls.Add(_hotkeyTitleLabel);
@@ -333,6 +324,14 @@ public class SettingsForm : Form
         };
     }
 
+    private static void ApplyDarkFlatStyle(Button btn)
+    {
+        btn.FlatStyle = FlatStyle.Flat;
+        btn.BackColor = Color.FromArgb(50, 50, 50);
+        btn.ForeColor = Color.White;
+        btn.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+    }
+
     private void OnLanguageChanged(object? sender, EventArgs e)
     {
         var lang = _langCombo.SelectedItem!.ToString()!;
@@ -392,8 +391,7 @@ public class SettingsForm : Form
         _recordButton.Text = Lang.Get("RecordCombo");
         _recordButton.Enabled = true;
         _okButton.Enabled = true;
-        _recordButton.BackColor = Color.FromArgb(50, 50, 50);
-        _recordButton.FlatAppearance.BorderColor = Color.FromArgb(80, 80, 80);
+        ApplyDarkFlatStyle(_recordButton);
 
         if (_recordedButtons.Count == 0)
         {
@@ -505,6 +503,8 @@ public class SettingsForm : Form
         _hotkeyLabel.Text = Lang.Get("PressHotkey");
         _hotkeyRecordButton.Enabled = false;
         _okButton.Enabled = false;
+        _hotkeyRecordButton.BackColor = Color.FromArgb(200, 60, 60);
+        _hotkeyRecordButton.FlatAppearance.BorderColor = Color.FromArgb(180, 40, 40);
     }
 
     protected override void OnKeyDown(KeyEventArgs e)
@@ -523,6 +523,7 @@ public class SettingsForm : Form
                 _isRecordingHotkey = false;
                 _hotkeyRecordButton.Enabled = true;
                 _okButton.Enabled = true;
+                ApplyDarkFlatStyle(_hotkeyRecordButton);
                 UpdateHotkeyText();
                 e.Handled = true;
                 return;

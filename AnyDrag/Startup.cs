@@ -1,10 +1,10 @@
 using Microsoft.Win32;
 
-namespace MouseDrag;
+namespace AnyDrag;
 
 public static class Startup
 {
-    private const string AppName = "MouseDrag";
+    private const string AppName = "AnyDrag";
     private static readonly string ExePath = Environment.ProcessPath!;
 
     public static bool IsEnabled()

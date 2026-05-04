@@ -1,4 +1,4 @@
-namespace MouseDrag;
+namespace AnyDrag;
 
 public static class Lang
 {
@@ -17,7 +17,7 @@ public static class Lang
             ["TrayDisabledTip"] = "已禁用",
 
             // Settings form
-            ["SettingsTitle"] = "MouseDrag 设置",
+            ["SettingsTitle"] = "AnyDrag 设置",
             ["ButtonCount"] = "按键数量：",
             ["CurrentCombo"] = "当前按键组合：",
             ["RecordCombo"] = "录制新组合",
@@ -49,7 +49,7 @@ public static class Lang
             ["TrayDisabledTip"] = "Disabled",
 
             // Settings form
-            ["SettingsTitle"] = "MouseDrag Settings",
+            ["SettingsTitle"] = "AnyDrag Settings",
             ["ButtonCount"] = "Button count:",
             ["CurrentCombo"] = "Current combo:",
             ["RecordCombo"] = "Record Combo",

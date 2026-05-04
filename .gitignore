@@ -11,8 +11,8 @@ obj/
 .claude/
 
 ## Publish output
-MouseDrag/publish/
-MouseDrag/publish-fd/
+AnyDrag/publish/
+AnyDrag/publish-fd/
 
 ## IDE
 .idea/

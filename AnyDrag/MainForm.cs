@@ -1,4 +1,4 @@
-namespace MouseDrag;
+namespace AnyDrag;
 
 public class MainForm : Form
 {
@@ -34,7 +34,7 @@ public class MainForm : Form
 
     private void InitializeComponent()
     {
-        Text = "MouseDrag";
+        Text = "AnyDrag";
         ShowInTaskbar = false;
         WindowState = FormWindowState.Minimized;
         FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -83,7 +83,7 @@ public class MainForm : Form
 
         _trayIcon = new NotifyIcon
         {
-            Text = $"MouseDrag - {Lang.FormatCombo(_settings.ButtonCombo)}",
+            Text = $"AnyDrag - {Lang.FormatCombo(_settings.ButtonCombo)}",
             ContextMenuStrip = _trayMenu,
             Visible = true
         };
@@ -136,7 +136,7 @@ public class MainForm : Form
         _settings.Enabled = _isEnabled;
         _settings.Save();
         UpdateIcon();
-        _trayIcon.ShowBalloonTip(2000, "MouseDrag",
+        _trayIcon.ShowBalloonTip(2000, "AnyDrag",
             _isEnabled ? Lang.Get("TrayEnabledTip") : Lang.Get("TrayDisabledTip"),
             ToolTipIcon.Info);
     }
@@ -149,7 +149,7 @@ public class MainForm : Form
             _settings = form.Settings;
             Lang.SetLanguage(_settings.Language);
             _hook.SetRequiredButtons(_settings.ButtonCombo);
-            _trayIcon.Text = $"MouseDrag - {Lang.FormatCombo(_settings.ButtonCombo)}";
+            _trayIcon.Text = $"AnyDrag - {Lang.FormatCombo(_settings.ButtonCombo)}";
             _settings.Save();
             RegisterToggleHotkey();
             RefreshTrayMenu();

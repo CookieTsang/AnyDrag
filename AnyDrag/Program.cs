@@ -1,4 +1,4 @@
-namespace MouseDrag;
+namespace AnyDrag;
 
 static class Program
 {

@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace MouseDrag;
+namespace AnyDrag;
 
 public class AppSettings
 {
@@ -19,7 +19,7 @@ public class AppSettings
 
     private static readonly string SettingsDir = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        "MouseDrag");
+        "AnyDrag");
     private static readonly string SettingsPath = Path.Combine(SettingsDir, "settings.json");
 
     private static readonly JsonSerializerOptions JsonOptions = new()

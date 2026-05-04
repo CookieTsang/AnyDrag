@@ -5,7 +5,7 @@
 
 ---
 
-# MouseDrag
+# AnyDrag
 
 <a id="中文"></a>
 
@@ -25,7 +25,7 @@ Windows 鼠标组合键拖拽窗口工具。类似 macOS 三指拖拽，但用�
 
 ### 使用
 
-1. 运行 `MouseDrag.exe`，程序最小化到系统托盘（绿色圆点）
+1. 运行 `AnyDrag.exe`，程序最小化到系统托盘（绿色圆点）
 2. 默认组合键：**左键 + 右键 + 侧键1**，同时按住即可拖拽窗口
 3. 双击托盘图标切换开关，右键菜单可进入设置
 
@@ -45,8 +45,8 @@ Windows 鼠标组合键拖拽窗口工具。类似 macOS 三指拖拽，但用�
 
 | 版本 | 文件 | 大小 | 说明 |
 |------|------|------|------|
-| 自包含版 | `MouseDrag-v1.0.0-win-x64-self-contained.zip` | ~63 MB | 无需安装任何运行时，解压即用 |
-| 框架依赖版 | `MouseDrag-v1.0.0-win-x64-framework-dependent.zip` | ~90 KB | 需先安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)，体积小 |
+| 自包含版 | `AnyDrag-v1.0.0-win-x64-self-contained.zip` | ~63 MB | 无需安装任何运行时，解压即用 |
+| 框架依赖版 | `AnyDrag-v1.0.0-win-x64-framework-dependent.zip` | ~90 KB | 需先安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0)，体积小 |
 
 > 推荐大多数用户使用**自包含版**，开箱即用。如果你已安装 .NET 8 运行时，可选框架依赖版节省空间。
 >
@@ -71,7 +71,7 @@ MIT License
 
 ---
 
-# MouseDrag
+# AnyDrag
 
 <a id="english"></a>
 
@@ -91,7 +91,7 @@ A Windows tool for dragging windows with mouse button combos — like macOS thre
 
 ### Usage
 
-1. Run `MouseDrag.exe` — the app minimizes to the system tray (green dot)
+1. Run `AnyDrag.exe` — the app minimizes to the system tray (green dot)
 2. Default combo: **Left + Right + Side1** — hold all three and move the mouse to drag a window
 3. Double-click the tray icon to toggle on/off, right-click for settings
 
@@ -111,8 +111,8 @@ Download the latest version from the [Releases](../../releases) page.
 
 | Version | File | Size | Description |
 |---------|------|------|-------------|
-| Self-contained | `MouseDrag-v1.0.0-win-x64-self-contained.zip` | ~63 MB | No runtime needed, extract and run |
-| Framework-dependent | `MouseDrag-v1.0.0-win-x64-framework-dependent.zip` | ~90 KB | Requires [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0), smaller download |
+| Self-contained | `AnyDrag-v1.0.0-win-x64-self-contained.zip` | ~63 MB | No runtime needed, extract and run |
+| Framework-dependent | `AnyDrag-v1.0.0-win-x64-framework-dependent.zip` | ~90 KB | Requires [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0), smaller download |
 
 > Most users should use the **self-contained** version. Choose framework-dependent if you already have .NET 8 installed.
 >

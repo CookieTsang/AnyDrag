@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace MouseDrag;
+namespace AnyDrag;
 
 public class WindowDragger
 {

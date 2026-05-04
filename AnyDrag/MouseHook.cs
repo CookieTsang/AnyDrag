@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace MouseDrag;
+namespace AnyDrag;
 
 public enum MouseButton
 {

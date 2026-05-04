@@ -1,4 +1,4 @@
-namespace MouseDrag;
+namespace AnyDrag;
 
 public class SettingsForm : Form
 {
